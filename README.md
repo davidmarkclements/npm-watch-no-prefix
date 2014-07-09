@@ -1,4 +1,4 @@
-# npm-watch
+# npm-watch-no-prefix
 
 Run scripts from package.json when files change.
 

@@ -1,5 +1,5 @@
 {
-  "name": "npm-watch",
+  "name": "npm-watch-no-prefix",
   "version": "0.0.0",
   "description": "run scripts from package.json when files change",
   "main": "index.js",
@@ -26,29 +26,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/grncdr/npm-watch.git"
+    "url": "git://github.com/davidmarkclements/npm-watch-no-prefix.git"
   },
   "bugs": {
-    "url": "git://github.com/grncdr/npm-watch/issues"
+    "url": "git://github.com/davidmarkclements/npm-watch-no-prefix/issues"
   },
-  "homepage": "https://github.com/grncdr/npm-watch",
+  "homepage": "https://github.com/davidmarkclements/npm-watch-no-prefix",
   "keywords": [
     "npm",
     "watch",
     "nodemon",
     "monitor"
   ],
-  "author": {
-    "name": "Stephen Sugden",
-    "email": "me@stephensugden.com"
-  },
+  "author": "Stephen Sugden <me@stephensugden.com>",
   "license": "MIT",
-  "readme": "# npm-watch\n\nRun scripts from package.json when files change.\n\n## Synopsis\n\nInstall it:\n\n    npm install npm-watch\n\nAdd a top-level `\"watch\"` config to your `package.json` and a \"watch\" script to\nyour `\"scripts\"`:\n\n```javascript\n{\n  \"watch\": {\n    \"test\": \"{src,test}/*.js\"\n  },\n  \"scripts\": {\n    \"test\": \"tape test/*.js\",\n    \"watch\": \"npm-watch\"\n  }\n}\n```\n\nThe keys of the `\"watch\"` config should match the names of your `\"scripts\"`, and\nthe values should be a glob pattern or array of glob patterns to watch.\n\nStart the watcher with `npm run watch` in a terminal, then edit some files:\n\n```bash\nmkdir src test\nnpm run watch &\ncat <<EOF > test/test-sum.js\nvar test = require('tape')\ntest('sum module', function (t) {\n  var sum = require('../src/sum.js')\n  t.ok(sum(1, 2), 3, \"Sums appear correct\")\n  t.end()\n})\nEOF\n```\n\n_(Feel free to use the editor of your choice, `cat` just makes for easy demos)_\n\nYou should see that your tests ran automatically, and failed because `src/sum.js`\nis missing. Let's fix that:\n\n```bash\ncat <<EOF > src/sum.js\nmodule.exports = function (a, b)  {\n  return 1\n}\nEOF\n```\n\nOur tests will run again, and this time they *almost* work. Let's fix `sum.js`:\n\n```bash\ncat <<EOF > src/sum.js\nmodule.exports = function (a, b)  {\n  return a + b\n}\nEOF\n```\n\nTests run *perfectly*, ship it to the enterprise!\n\n## Acknowledgements\n\nThis module does very little but run [`nodemon`](http://npm.im/nodemon) for you, all\ncredit for the reliable file watching and process restarting should go to there.\n\n## License\n\nMIT\n",
-  "readmeFilename": "README.md",
-  "_id": "npm-watch@0.0.0",
   "dist": {
     "shasum": "c9442ebff0f6c8eb596ebdcc18302451bb39daa9"
   },
-  "_from": "npm-watch@",
-  "_resolved": "https://registry.npmjs.org/npm-watch/-/npm-watch-0.0.0.tgz"
+  "directories": {
+    "test": "test"
+  }
 }
